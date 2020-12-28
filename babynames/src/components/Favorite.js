@@ -5,7 +5,7 @@ export default class Favorite extends Component {
     return (
       <div>
         <p style={{ color: "grey" }}>
-          Favorites:Click some names below to add to your shortlist...
+          Favorites:Click some names below to add to your shortlist...{this.props.favoriteNames}
         </p>
 
         <hr style={{ width: "95%" }} />

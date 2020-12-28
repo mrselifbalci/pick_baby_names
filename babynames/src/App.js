@@ -10,6 +10,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       allnames: names,
+      favoriteNames:[]
     };
     // this.filterNames=this.filterNames.bind(this)
   }
@@ -40,8 +41,14 @@ export default class App extends Component {
       });
   }
 
+
+
   favorite=()=>{
-    console.log('calisti')
+     
+    this.setState({
+        favoriteNames:names.filter((item)=>item.isClicked === 'true')
+      });
+   
 }
 
   render() {
@@ -56,8 +63,8 @@ export default class App extends Component {
           onlyBoys={this.onlyBoys}
           defaultNames={this.defaultNames}
         />
-        <Favorite />
-        <AllNames names={this.state.allnames} favorite={this.favorite}/>
+        <Favorite favoriteNames={this.state.favoriteNames}/>
+        <AllNames names={this.state.allnames} favorite={this.favorite} favoriteNames={this.state.favoriteNames}/>
       </div>
     );
   }
