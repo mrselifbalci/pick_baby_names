@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import names from './components/Names'
+import Favorite from './components/Favorite'
+import AllNames from './components/AllNames'
+import Input from './components/Input'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{marginTop:20}} className="App">
+    <h1 style={{color:'hotpink'}}>Baby Name Picker</h1>
+    <br/>
+    <Input names={names}/>
+    <Favorite />
+    <AllNames names={names}/>
     </div>
   );
 }
 
 export default App;
+
