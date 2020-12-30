@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import names from "./components/Names";
-import Favorite from "./components/Favorite";
 import AllNames from "./components/AllNames";
 import Input from "./components/Input";
+import Name from "./components/Name";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -41,15 +42,25 @@ export default class App extends Component {
       });
   }
 
+  clicked=(id)=>{
+      
+    this.setState(this.state.allnames.map(item=>{
+    if(item.id === id){
+      item.isClicked=!item.isClicked
+      
+    } 
+    return this.favorite(item)
+    })) 
+    
+    } 
+
+   favorite=(fav)=>{
+     return <button>fav</button>
+   }
+ 
 
 
-  favorite=()=>{
-     
-    this.setState({
-        favoriteNames:names.filter((item)=>item.isClicked === 'true')
-      });
-   
-}
+
 
   render() {
     return (
@@ -63,8 +74,9 @@ export default class App extends Component {
           onlyBoys={this.onlyBoys}
           defaultNames={this.defaultNames}
         />
-        <Favorite favoriteNames={this.state.favoriteNames}/>
-        <AllNames names={this.state.allnames} favorite={this.favorite} favoriteNames={this.state.favoriteNames}/>
+        
+        <Name names={this.state.allnames} favorite={this.favorite}/>
+        <AllNames names={this.state.allnames}   clicked={this.clicked}/>
       </div>
     );
   }
